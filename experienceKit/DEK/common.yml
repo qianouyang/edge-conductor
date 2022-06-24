@@ -1,0 +1,21 @@
+## This is the common definition of all DEKs.
+Parameters:
+  customconfig:
+    registry:
+      user: admin
+  global_settings:
+    registry_port: "9000"
+
+Components:
+  manifests:
+  - "config/manifests/component_manifest.yml"
+  selector:
+  - name: multus
+  - name: intel-gpu-plugin
+  - name: prometheus
+  - name: rt-linux-detection
+  - name: akri
+
+
+
+  

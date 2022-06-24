@@ -1,0 +1,113 @@
+#
+# Copyright (c) 2022 Intel Corporation.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+definitions:
+  clustermanifest:
+    type: object
+    properties:
+      cluster_providers:
+        type: array
+        items:
+          properties:
+            name:
+              type: string
+              pattern: @PATTERNNORMALSTRING@
+            version:
+              type: string
+            registrystorage:
+              type: string
+              pattern: @PATTERNFILEPATH@
+            images:
+              type: array
+              items:
+                properties:
+                  name:
+                    type: string
+                    pattern: @PATTERNNORMALSTRING@
+                  repo_tag:
+                    type: string
+            binaries:
+              type: array
+              items:
+                properties:
+                  name:
+                    type: string
+                    pattern: @PATTERNNORMALSTRING@
+                  url:
+                    type: string
+                    pattern: @PATTERNURL@
+                  sha256:
+                    type: string
+            resources:
+              type: array
+              items:
+                properties:
+                  name:
+                    type: string
+                    pattern: @PATTERNNORMALSTRING@
+                  value:
+                    type: string
+
+      clusterapi:
+        type: object
+        properties:
+          runtime:
+            type: string
+            enum:
+            - containerd
+            - crio
+          configs:
+            type: array
+            items:
+              properties:
+                name:
+                  type: string
+                bin_url:
+                  type: string
+                  pattern: @PATTERNURL@
+                providers:
+                  $ref: 'capiprovider.yml#/definitions/provider'
+                images:
+                  type: array
+                  items:
+                    type: string
+                    pattern: @PATTERNIMAGENAMESTRING@
+                runtime_bins:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      url:
+                        type: string
+                        pattern: @PATTERNURL@
+                      version:
+                        type: string
+          cert-manager:
+            type: object
+            properties:
+              version:
+                type: string
+              url:
+                type: string
+                pattern: @PATTERNURL@
+          byoh-config:
+            type: object
+            properties:
+              host_agent_bin_url:
+                type: string
+                pattern: @PATTERNURL@
+              download_bin_url:
+                type: string
+                pattern: @PATTERNURL@
+              bundle_registry:
+                type: string
+              bundle_image:
+                type: string
+        required:
+        - cri
+        default:
+          cri: containerd

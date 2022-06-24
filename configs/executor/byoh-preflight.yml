@@ -1,0 +1,82 @@
+#
+# Copyright (c) 2022 Intel Corporation.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+apiVersion: conductor/v1
+kind: Executor
+metadata:
+  name: byoh-preflight
+spec:
+  steps:
+  - name: byoh-preflight
+    nodes:
+      allOf:
+      - controlplane
+      - etcd
+      - worker
+    commands:
+    - type: copyFromDay0
+      cmd:
+      - {{ .Workspace }}/cert/pki/registry/registry.pem
+      - /tmp/
+    - type: copyFromDay0
+      cmd:
+      - {{ .Workspace }}/runtime/bin/byohHostAgent
+      - /tmp/
+    - type: copyFromDay0
+      cmd:
+      - {{ .Workspace }}/runtime/m_kubeconfig
+      - /tmp/
+    - type: copyFromDay0
+      cmd:
+      - {{ .Workspace }}/cert/pki/ca.pem
+      - /tmp/
+    {{ if eq .Value.CRI.Name "crio" }}
+    - type: copyFromDay0
+      cmd:
+      - {{ .Runtimedir }}/{{ .Value.Provider }}/crio/crio.tar.gz
+      - /tmp/
+    {{- end }}
+    - type: shell
+      cmd:
+      - sudo
+      - sh
+      - -c
+      - |
+        "mkdir -p /etc/containerd/certs.d/{{ $.Ekconfig.Parameters.GlobalSettings.ProviderIP }}:{{ $.Ekconfig.Parameters.GlobalSettings.RegistryPort }} && \
+         cp -f /tmp/ca.pem /etc/containerd/certs.d/{{ .Ekconfig.Parameters.GlobalSettings.ProviderIP }}:{{ .Ekconfig.Parameters.GlobalSettings.RegistryPort }}/ca.crt && \
+         mkdir -p /etc/containers/certs.d/{{ $.Ekconfig.Parameters.GlobalSettings.ProviderIP }}:{{ $.Ekconfig.Parameters.GlobalSettings.RegistryPort }} && \
+         cp -f /tmp/ca.pem /etc/containers/certs.d/{{ .Ekconfig.Parameters.GlobalSettings.ProviderIP }}:{{ .Ekconfig.Parameters.GlobalSettings.RegistryPort }}/ca.crt && \
+         cp -f /tmp/byohHostAgent /usr/bin   && \
+         chmod 777 /usr/bin/byohHostAgent && \
+         cp -f /tmp/registry.pem /etc/ssl/   && \
+         ln -sf /etc/ssl/registry.pem /usr/share/ca-certificates/registry.pem && \
+         sed -i '\$aregistry.pem'  /etc/ca-certificates.conf                  && \
+         update-ca-certificates --fresh"
+  - name: byoh-controller-register
+    nodes:
+      allOf:
+      - controlplane
+    commands:
+    - type: shell
+      cmd:
+      - sudo
+      - -E
+      - sh
+      - -c
+      - |
+        "nohup byohHostAgent --kubeconfig /tmp/m_kubeconfig --namespace byoh --label type=controlplane >> /tmp/byohAgent.log 2>&1 & sleep 2"
+  - name: byoh-worker-register
+    nodes:
+      allOf:
+      - worker
+    commands:
+    - type: shell
+      cmd:
+      - sudo
+      - -E
+      - sh
+      - -c
+      - |
+        "nohup byohHostAgent --kubeconfig /tmp/m_kubeconfig --namespace byoh --label type=worker >> /tmp/byohAgent.log 2>&1 & sleep 2"

@@ -1,0 +1,9 @@
+#
+# Copyright (c) 2022 Intel Corporation.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+esp:
+  rel_url: "https://github.com/intel/Edge-Software-Provisioner/archive/refs/tags/v2.0.3.tar.gz"
+  rel_sha256: "314084f6fb5b0ff05cdfcfbd83392bcd58a8b3adae6e3fa985083a6af2d216df"
+  rel_version: "2.0.3"

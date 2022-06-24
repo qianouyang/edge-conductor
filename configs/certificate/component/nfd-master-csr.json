@@ -1,0 +1,16 @@
+{
+    "CN": "nfd-master",
+    "hosts": ["nfd-node-feature-discovery-master", "localhost"],
+    "key": {
+        "algo": "ecdsa-p384"
+    },
+    "names": [
+        {
+            "C": "",
+            "L": "",
+            "ST": "",
+            "O": "",
+            "OU": ""
+        }
+    ]
+}

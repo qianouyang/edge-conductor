@@ -1,0 +1,11 @@
+#
+# Copyright (c) 2022 Intel Corporation.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+image:
+  repository: portainer/portainer-ce
+  tag: 2.11.1
+  pullPolicy: Always
+

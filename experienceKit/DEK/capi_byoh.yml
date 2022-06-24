@@ -1,0 +1,105 @@
+## This is the official DEK for ClusterAPI BYOH provider with ESP profile.
+##
+## Preconditions:
+## - Users need to setup the ESP network topologic (following the settings in config/extensions/esp_network.yml), and connect all the nodes to be installed to the ESP network.
+## - Before running the "init" command, users need to:
+##     - Update ESP config file defined in "OS - Config" section, with correct "git_username" and "git_token" to access the profile git repo.
+##     - Input the MAC addresses and static IP addresses of the nodes in the "Parameters - nodes" config section.
+##     - Input the default password of the nodes in the "Parameters - nodes" config section.
+##     - Input the default SSH public key path. After ESP provisioning, allows you to connect to target nodes without password.
+## - After OS provisioning finished with ESP, and before "cluster deploy", login to the nodes and make sure users have permission to run "sudo" command with no password.
+##
+## Features:
+## - The ESP resource files will be installed from upstream with an external network connection.
+## - The ClusterAPI BYOH provider will be used to do the cluster deployment.
+## - The default container runtime used in the target cluster is containerd.
+## - Offline deployment is not supported yet.
+
+Use:
+- experienceKit/DEK/common.yml
+
+Parameters:
+  customconfig:
+    registry:
+      password: ""
+  ## Input ssh public key path into the blank.
+  ## Example: /home/path/.ssh/id_rsa.pub
+  ## default_ssh_key_path: /home/path/.ssh/id_rsa.pub
+  default_ssh_key_path:
+  ## Input http proxy and ESP will use this parameter to provision on target node
+  ## Example: http_proxy: "http://www.example.com"
+  ## After ESP provision, the http_proxy is already set on target node.
+  ## So do https_proxy and no_proxy
+  global_settings:
+    provider_ip:
+    http_proxy: ""
+    https_proxy: ""
+    no_proxy: ""
+    dns_server: ""
+    ntp_server: ""
+  nodes:
+  - name: node-0
+    user: sys-admin
+    mac: "<mac_addr_0>"
+    ip:
+    ssh_passwd: ""
+    role:
+    - controlplane
+    - etcd
+  - name: node-1
+    user: sys-admin
+    mac: "<mac_addr_1>"
+    ip:
+    ssh_passwd: ""
+    role:
+    - worker
+  extensions:
+  - capi-byoh
+  - esp_network
+  - sriov
+  - service-tls
+
+OS:
+  manifests:
+  - "config/manifests/os_provider_manifest.yml"
+  provider: esp
+  # Before running "init" with this EK config file, please update ESP config
+  # with correct "git_username" and "git_token" to access the profile git repo.
+  config: "config/os-provider/esp_config_profile-ubuntu-20.04.yml"
+
+Cluster:
+  manifests:
+  - "config/manifests/cluster_provider_manifest.yml"
+  provider: capi
+  config: "config/cluster-provider/capi_cluster.yml"
+
+Components:
+  manifests:
+  - "config/manifests/component_manifest.yml"
+  selector:
+  - name: calico
+  - name: nfd
+  - name: nginx-ingress
+    override:
+      url: https://github.com/kubernetes/ingress-nginx/releases/download/helm-chart-4.0.15/ingress-nginx-4.0.15.tgz
+      chartoverride: file://{{ .Workspace }}/config/service-overrides/ingress/capi-nginx-ingress.yml
+      images:
+        - k8s.gcr.io/ingress-nginx/controller:v1.1.1
+        - k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1
+        - k8s.gcr.io/defaultbackend-amd64:1.5
+  - name: intel-sriov-network
+  - name: rook-ceph
+    override:
+      images:
+        - rook/ceph:v1.8.8
+  - name: rook-ceph-cluster
+    override:
+      images:
+        - quay.io/ceph/ceph:v16.2.7
+        - quay.io/cephcsi/cephcsi:v3.5.1
+        - k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.0
+        - k8s.gcr.io/sig-storage/csi-provisioner:v3.1.0
+        - k8s.gcr.io/sig-storage/csi-resizer:v1.4.0
+        - k8s.gcr.io/sig-storage/csi-attacher:v3.4.0
+        - k8s.gcr.io/sig-storage/csi-snapshotter:v5.0.1
+  - name: portainer-ce

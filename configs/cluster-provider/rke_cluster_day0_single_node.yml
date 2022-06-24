@@ -1,0 +1,38 @@
+#
+# Copyright (c) 2022 Intel Corporation. 
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+#
+nodes:
+  - address: {{ .Ekconfig.Parameters.GlobalSettings.ProviderIP }}
+    user: {{ .User }}
+    role:
+      - controlplane
+      - etcd
+      - worker
+    ssh_key_path: ~/.ssh/id_rsa
+ssh_key_path: ~/.ssh/id_rsa
+private_registries:
+    - url: {{ .Ekconfig.Parameters.GlobalSettings.ProviderIP }}:{{ .Ekconfig.Parameters.GlobalSettings.RegistryPort }}/docker.io
+      user: {{ .Ekconfig.Parameters.Customconfig.Registry.User }}
+      password: {{ .Ekconfig.Parameters.Customconfig.Registry.Password }}
+      is_default: true
+system_images:
+ingress:
+{{- range .Extensions -}}
+{{- if eq .Name "ingress" -}}
+{{- range .Extension.Extension -}}
+{{- if eq .Name "rke-ingress" -}}
+{{- range .Config -}}
+{{- if eq .Name "provider"}}
+  provider: {{ .Value }}
+{{- end -}}
+{{- if eq .Name "default-backend"}}
+  default_backend: {{ .Value }}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+{{- end }}

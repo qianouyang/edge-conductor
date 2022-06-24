@@ -1,0 +1,16 @@
+{
+    "CN": "nfd-worker",
+    "hosts": ["nfd-node-feature-discovery-worker", "localhost"],
+    "key": {
+        "algo": "ecdsa-p384"
+    },
+    "names": [
+        {
+            "C": "",
+            "L": "",
+            "ST": "",
+            "O": "",
+            "OU": ""
+        }
+    ]
+}

@@ -1,0 +1,62 @@
+#
+# Copyright (c) 2022 Intel Corporation. 
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+#
+# This extension defines the certificate csr as well as secret name the services
+# 
+# Please follow below definition
+#
+# extension:
+# 
+# - name: example-service
+#   config:
+#   # name of the service
+#   - name: service-name
+#     value: "prometheus"
+#   - name: ca-secret-name
+#     value: "example-service-ca-secret"
+#   - name: csr-filename
+#     value: "example-service-csr.json"
+#   - name: tls-secret-name
+#     value: "example-service-tls"
+#   - name: client-csr-filename
+#     value: "example-service-client-csr.json"
+#   - name: client-tls-secret-name
+#     value: "example-service-client-tls"
+# 
+#   # CSR files should be placed in configs/certificate/component/
+#
+extension:
+- name: prometheus
+  config:
+  - name: service-name
+    value: "prometheus"
+  - name: ca-secret-name
+    value: "prometheus-ca"
+  - name: csr-filename
+    value: "prometheus-csr.json"
+  - name: tls-secret-name
+    value: "prometheus-tls"
+- name: nfd-master
+  config:
+  - name: service-name
+    value: "nfd"
+  - name: csr-filename
+    value: "nfd-master-csr.json"
+  - name: client-csr-filename
+    value: "nfd-master-csr.json"
+  - name: tls-secret-name
+    value: "nfd-master-cert"
+- name: nfd-worker
+  config:
+  - name: service-name
+    value: "nfd"
+  - name: csr-filename
+    value: "nfd-worker-csr.json"
+  - name: client-csr-filename
+    value: "nfd-worker-csr.json"
+  - name: tls-secret-name
+    value: "nfd-worker-cert"

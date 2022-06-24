@@ -1,0 +1,60 @@
+From 598562ef0a249ef546736d1a33a3d2e302946bab Mon Sep 17 00:00:00 2001
+From: ChantYuCN <chengde.yu@intel.com>
+Date: Thu, 19 May 2022 02:58:49 +0000
+Subject: [PATCH 1/2] feat: prepare volume for local git repo
+
+Signed-off-by: ChantYuCN <chengde.yu@intel.com>
+---
+ scripts/profileutils.sh | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/scripts/profileutils.sh b/scripts/profileutils.sh
+index f3476f3..bb89409 100755
+--- a/scripts/profileutils.sh
++++ b/scripts/profileutils.sh
+@@ -88,7 +88,7 @@ cloneProfile() {
+         fi
+ 
+         run "  ${C_GREEN}${name}${T_RESET}: Cloning branch ${git_branch_name} on repo ${git_remote_url} with ssh-agent" \
+-            "docker run --rm --privileged ${DOCKER_RUN_ARGS} ${docker_ssh_args-} -v ${WEB_PROFILE}:/tmp/profiles -w /tmp/profiles builder-git git clone ${custom_git_arguments} -v --progress ${git_clone_target} --branch=${git_branch_name} ${name}" \
++            "docker run --rm --privileged ${DOCKER_RUN_ARGS} ${docker_ssh_args-} -v ${PWD}/localprofiles:/opt/localprofiles -v ${WEB_PROFILE}:/tmp/profiles -w /tmp/profiles builder-git git clone ${custom_git_arguments} -v --progress ${git_clone_target} --branch=${git_branch_name} ${name}" \
+             ${LOG_FILE}
+     else
+         printDatedMsg "  Clone - ${C_GREEN}${name}${T_RESET} already exists."
+@@ -126,7 +126,7 @@ cloneProfile() {
+                 logInfoMsg "Clone - No Git authentication method found (git_username/git_token, or SSH-Agent)."
+             fi
+             run "  ${C_GREEN}${base_name}${T_RESET}: Cloning branch ${git_base_branch_name} on repo ${git_remote_url}" \
+-                "docker run --rm --privileged ${DOCKER_RUN_ARGS} ${docker_ssh_args-} -v ${WEB_PROFILE}:/tmp/profiles -w /tmp/profiles builder-git git clone ${custom_git_arguments} -v --progress ${git_clone_target} --branch=${git_base_branch_name} ${base_name}" \
++                "docker run --rm --privileged ${DOCKER_RUN_ARGS} ${docker_ssh_args-} -v ${PWD}/localprofiles:/opt/localprofiles -v ${WEB_PROFILE}:/tmp/profiles -w /tmp/profiles builder-git git clone ${custom_git_arguments} -v --progress ${git_clone_target} --branch=${git_base_branch_name} ${base_name}" \
+                 ${LOG_FILE}
+         else
+             printDatedMsg "  Clone - ${C_GREEN}${base_name}${T_RESET} already exists."
+@@ -218,7 +218,7 @@ pullProfile() {
+             logInfoMsg "No Git authentication method found (git_username/git_token, or SSH-Agent)."
+         fi
+         run "  ${C_GREEN}${name}${T_RESET}: Pulling latest from ${git_branch_name} on repo ${git_remote_url}" \
+-            "docker run --rm --privileged ${DOCKER_RUN_ARGS} ${docker_ssh_args-} -v ${WEB_PROFILE}/${name}:/tmp/profiles/${name} -w /tmp/profiles/${name} builder-git sh -c 'git fetch origin ${git_branch_name} && git reset --hard ${git_branch_name} && git pull origin ${git_branch_name}'" \
++            "docker run --rm --privileged ${DOCKER_RUN_ARGS} ${docker_ssh_args-} -v ${PWD}/localprofiles:/opt/localprofiles -v ${WEB_PROFILE}/${name}:/tmp/profiles/${name} -w /tmp/profiles/${name} builder-git sh -c 'git fetch origin ${git_branch_name} && git reset --hard ${git_branch_name} && git pull origin ${git_branch_name}'" \
+             ${LOG_FILE}
+     else
+         printDatedErrMsg "Profile ${name} either is improperly configured or does not exist."
+@@ -251,7 +251,7 @@ pullProfile() {
+                 logInfoMsg "Pull - No Git authentication method found (git_username/git_token, or SSH-Agent)."
+             fi
+             run "  ${C_GREEN}${base_name}${T_RESET}: Pulling latest from ${git_base_branch_name} on repo ${git_remote_url}" \
+-                "docker run --rm --privileged ${DOCKER_RUN_ARGS} ${docker_ssh_args-} -v ${WEB_PROFILE}/${base_name}:/tmp/profiles/${base_name} -w /tmp/profiles/${base_name} builder-git sh -c 'git fetch origin ${git_base_branch_name} && git reset --hard ${git_base_branch_name} && git pull origin ${git_base_branch_name}'" \
++                "docker run --rm --privileged ${DOCKER_RUN_ARGS} ${docker_ssh_args-} -v ${PWD}/localprofiles:/opt/localprofiles -v ${WEB_PROFILE}/${base_name}:/tmp/profiles/${base_name} -w /tmp/profiles/${base_name} builder-git sh -c 'git fetch origin ${git_base_branch_name} && git reset --hard ${git_base_branch_name} && git pull origin ${git_base_branch_name}'" \
+                 ${LOG_FILE}
+         else
+             printDatedErrMsg "Profile ${base_name} either is improperly configured or does not exist."
+@@ -1621,4 +1621,4 @@ startGitea() {
+                 "${LOG_FILE}"
+         fi
+     fi
+-}
+\ No newline at end of file
++}
+-- 
+2.25.1
+
