@@ -85,7 +85,7 @@ on a management console to operate and administer the cluster.
 
 
 
-## Download and Build Edge Conductor Code (Internal users only)
+## Download and Build Edge Conductor Code
 
 1.  Get the code using one of the following methods:
 
