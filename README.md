@@ -2,12 +2,7 @@
 
 ## Welcome to Edge Conductor
 
-Edge Conductor is a framework to create, manage and operate Kubernetes clusters
-for Internet of Things (IOT) workloads. Essentially, Edge Conductor is a
-software reference stack for IOT Edge Computing. It provides orchestration
-capabilities for the infrastructure edge and for the device edge, while enabling
-common management for infrastructure systems and also a wide range of devices
-and endpoints.
+**Intel Edge Conductor** provides complete end-to-end manageability and infrastructure orchestration for all edges across various IoT verticals such as retail, health care, manufacturing, banking and entertainment. It is designed and built from ground up using modular microservices-based software stack focusing on heterogeneous needs of IoT verticals. The two main functional components are manageability and infrastructure orchestration. It also provides additional value-add such as policy engine, security, AI/ML capabilities, telemetry, automation and can interoperate with any Kubernetes distribution.
 
 ## Contents of this guide
 
@@ -90,7 +85,7 @@ on a management console to operate and administer the cluster.
 1.  Get the code using one of the following methods:
 
     * Get the code from git repo:
-        
+      
         ```bash
         git clone https://github.com/intel/edge-conductor.git edge-conductor
         ```
