@@ -9,7 +9,7 @@
 
   * [Edge Conductor Documentation](#edge-conductor-documentation)
   * [Edge Conductor Deployment Models](#edge-conductor-deployment-models)
-  * [Download and Build Edge Conductor Code (Internal users only)](#download-and-build-edge-conductor-code-internal-users-only)
+  * [Download and Build Edge Conductor Code](#download-and-build-edge-conductor-code)
   * [HW Requirements for Edge Conductor Day-0 Host](#hw-requirements-for-edge-conductor-day-0-host)
   * [OS and System Requirements for Edge Conductor Day-0 Host](#os-and-system-requirements-for-edge-conductor-day-0-host)
   * [FAQ](#faq)
