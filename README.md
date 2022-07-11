@@ -2,7 +2,7 @@
 
 ## Welcome to Edge Conductor
 
-**Intel Edge Conductor** provides complete end-to-end manageability and infrastructure orchestration for all edges across various IoT verticals such as retail, health care, manufacturing, banking and entertainment. It is designed and built from ground up using modular micro services -based software stack focusing on heterogeneous needs of IoT verticals. The two main functional components are manageability and infrastructure orchestration. It also provides additional value -add such as policy engine, security, AI/ML capabilities, telemetry, automation and can inter-operate with any Kubernetes distribution. 
+**Intel Edge Conductor** provides complete end-to-end manageability and infrastructure orchestration for all edges across various IoT verticals such as retail, health care, manufacturing, banking and entertainment. It is designed and built from ground up using modular micro services -based software stack focusing on heterogeneous needs of IoT verticals. The two main functional components are manageability and infrastructure orchestration. It also provides additional value-add such as policy engine, security, AI/ML capabilities, telemetry, automation and can inter-operate with any Kubernetes distribution. 
 
 ## Contents of this guide
 
