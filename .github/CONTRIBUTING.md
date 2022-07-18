@@ -1,6 +1,6 @@
 # Contributing to the runtime
 
-The [edge-conductor] is developed using the [fork and pull model]. Every 
+The [Intel® Edge-Conductor] is developed using the [fork and pull model]. Every 
 runtime contributor, whether an external contributor or an [Intel organization] 
 member, has their own public fork of the runtime repository and submits changes
 using [pull requests]. Contributions must pass continuous integration checks and 
@@ -133,10 +133,11 @@ branch that is checked out in a separate worktree.
 
 
 [Intel organization]: https://github.com/intel
-[Edge Conductor]: https://github.com/intel/edge-conductor
+[Intel® Edge-Conductor]: https://github.com/intel/edge-conductor
 [create a forked repository]: https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository
 [fork and pull model]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models#fork-and-pull-model
 [git identity]: https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup#_your_identity
 [git worktree]: https://git-scm.com/docs/git-worktree
 [pull requests]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 [remote repositories]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
+[runtime repository]: https://github.com/intel/edge-conductor
