@@ -255,4 +255,4 @@ Copyright (C) 2022 Intel Corporation
 
 SPDX-License-Identifier: Apache-2.0
 
-[CONTRIBUTING.md]: [https://github.com/intel](https://github.com/intel/edge-conductor/blob/devel_contributing/.github/CONTRIBUTING.md)
+[CONTRIBUTING.md]: [https://github.com/intel](https://github.com/intel/edge-conductor/blob/main/.github/CONTRIBUTING.md)
