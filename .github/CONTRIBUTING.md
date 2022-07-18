@@ -1,11 +1,11 @@
-# Contributing to the runtime
+# Contributing to the project
 
 The [Intel® Edge-Conductor] is developed using the [fork and pull model]. Every 
-runtime contributor, whether an external contributor or an [Intel organization] 
-member, has their own public fork of the runtime repository and submits changes
+contributor, whether an external contributor or an [Intel organization] 
+member, has their own public fork of the repository and submits changes
 using [pull requests]. Contributions must pass continuous integration checks and 
-review by the runtime maintainers before they are merged into the `main` branch 
-of the [runtime repository].
+review by the repository maintainers before they are merged into the `main` branch 
+of the [repository].
 
 ## Setting up your Git environment
 
@@ -15,12 +15,12 @@ identity] including your name and email address for your commits.
 ## Setting up your local repository
 
 Using the following steps, you will create a local repository that references
-two [remote repositories], the [runtime repository] and your own forked
-repository. During development, you will use the runtime repository to *pull*
+two [remote repositories], the [repository] and your own forked
+repository. During development, you will use the repository to *pull*
 new changes merged into the `main` branch, and your forked repository to *push*
 your proposed changes.
 
-1.  Browse to the [runtime repository] and [create a forked repository] under
+1.  Browse to the [repository] and [create a forked repository] under
     your GitHub username.
 
     In your forked repository, under *Settings* → *Actions* set the *Actions
@@ -33,7 +33,7 @@ your proposed changes.
     when the respective pull request is merged.
 
 
-2.  Clone the [runtime repository]:
+2.  Clone the [repository]:
 
     ```
     git clone -o intel https://github.com/intel/edge-conductor
@@ -55,7 +55,7 @@ your proposed changes.
     ```
 
     This sets the remote's name to your GitHub username to avoid confusion
-    with the [runtime repository].
+    with the [repository].
 
 5.  Set your forked repository as the default remote to push to:
 
@@ -140,4 +140,4 @@ branch that is checked out in a separate worktree.
 [git worktree]: https://git-scm.com/docs/git-worktree
 [pull requests]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 [remote repositories]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
-[runtime repository]: https://github.com/intel/edge-conductor
+[repository]: https://github.com/intel/edge-conductor
