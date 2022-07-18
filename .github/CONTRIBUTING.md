@@ -17,7 +17,7 @@ identity] including your name and email address for your commits.
 Using the following steps, you will create a local repository that references
 two [remote repositories], the [repository] and your own forked
 repository. During development, you will use the repository to *pull*
-new changes merged into the `main` branch, and your forked repository to *push*
+new changes from the `main` branch, and your forked repository to *push*
 your proposed changes.
 
 1.  Browse to the [repository] and [create a forked repository] under
