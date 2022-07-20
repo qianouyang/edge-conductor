@@ -64,7 +64,6 @@ pipeline {
                             else {print $1,$2,$3,$5}}' | sed 's/[()]//g' > ${STATEMENT_COV_FILE}
                         '''
                         sh 'mv ${FUNCTION_COV_FILE} ${HTML_COVERAGE_FILE} /tmp/'
-                        sh 'rm -r header_scan'
                         sh 'make artifact GO_BUILD_CMD=""'
                         archiveArtifacts artifacts: '**/*.tar.gz',
                         allowEmptyArchive: true,
