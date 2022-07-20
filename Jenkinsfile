@@ -20,18 +20,6 @@ pipeline {
         GOVERSION = "${sh(script:'cat build/Makefile | grep "GOVERSION =" | cut -d "=" -f2', returnStdout: true).trim()}"
     }
     stages {
-        stage ('Check license headers') {
-            steps {
-                withCredentials([string(credentialsId: 'sys_pmce_git_github_token', variable: 'GITHUB_API_TOKEN')]) {
-                    sh 'git clone https://${GITHUB_API_TOKEN}@github.com/intel-sandbox/applications.analyzers.infrastructure.license-header-checker.git header_scan'
-                    sh '''
-                    cd header_scan 
-                    echo -e "Copyright (c) {dates} Intel Corporation.\n\nSPDX-License-Identifier: Apache-2.0" > license_header_template.txt
-                    python3 license_header_checker.py check ../ -r
-                    '''
-                }
-            }
-        }
         stage('Go Pipeline') {
             environment {
                 MAKE_TEST_LOG = '/tmp/make_test_step.log'
