@@ -119,7 +119,7 @@ pipeline {
             }
             when {
                 anyOf {
-                    branch 'master';
+                    branch 'edge_conductor_v0.*.*';
                     branch 'main';
                     changeRequest();
                 }
