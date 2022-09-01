@@ -98,7 +98,7 @@ pipeline {
                 SCANNERS                   = getEnvFromBranch(env.BRANCH_NAME)
 
                 // protex details
-                PROTEX_PROJECT_NAME        = 'edge_conductor_opensource_master'
+                PROTEX_PROJECT_NAME        = 'edge_conductor_open_V0.5.0'
 
                 // publishArtifacts details
                 ARTIFACT_RETENTION_PERIOD  = ''
