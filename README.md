@@ -156,8 +156,8 @@ and stopping Edge Conductor services.
 The Day-0 host should meet the following minimal hardware requirements:
 
 - CPU: 2 or more cores
-- Memory: 2 gigabytes (GB) or greater.
-- Storage: 10 GB or greater available storage is required to build and run the
+- Memory: 4 gigabytes (GB) or greater.
+- Storage: 80 GB or greater available storage is required to build and run the
   Day-0 environment.
 - Internet connection: Internet connectivity is necessary to download and use
   some features.
@@ -166,8 +166,8 @@ The Day-0 host should meet the following minimal hardware requirements:
 Node Requirements:
 
 - CPU: 2 or more cores
-- Memory: 2 gigabytes (GB) or greater.
-- Storage: 10 GB or greater available storage is required to build and run the
+- Memory: 4 gigabytes (GB) or greater.
+- Storage: 40 GB or greater available storage is required to build and run the
   Day-0 environment.
 - Internet connection: Internet connectivity is necessary to download and use
   some features.
