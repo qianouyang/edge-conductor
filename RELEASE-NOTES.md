@@ -53,10 +53,10 @@ provided in the Edge Conductor v0.5.0 release.
 | No.| EC v0.5.0 Features            | Version | Kind | RKE  | CAPI |
 |----| -----------------------------|---------|------|------|----- |
 | 1  |`Calico`                 |  3.23.1    | No  | No | Yes   |
-| 2  |`CRI-O`                       |  1.23.2 | No   | No   | Yes  |
+| 2  |`CRI-O`                       |  1.23.3 | No   | No   | Yes  |
 | 3  |`Edge Software Provisioner`   |  2.0.3  | No   | Yes  | Yes† |
 | 4  |`Grafana Dashboard`           |  8.3.6  | Yes  | Yes  | Yes  |
-| 5  |`Intel-GPU-Plugin`            |  0.23   | No   | Yes  | No   |
+| 5  |`Intel-GPU-Plugin`            |  0.24   | No   | Yes  | No   |
 | 6  |`Multus`                      |  0.3.1   | Yes  | Yes  | Yes  |
 | 7  |`Offline deployment`          |  N/A    | No   | Yes  | Yes†   |
 | 8  |`Portainer-ce`                |  1.0.32 | Yes  | Yes  | Yes  |
@@ -81,15 +81,16 @@ The following table lists the versions for each cluster type provided in the Edg
 | 2  |`RKE`                 |  1.3.12    | 1.23.7-rancher1-1(default)  | -- | -- |-- |
 | 3  |`CAPI(core)`      |  1.2.0 | ---   | ---   | Cert-manager v1.9.0 | -- |
 | 4  |`CAPI-BYOH`    |  1.2.0 | 1.23.5   |  Crio v1.23.3 Containerd v1.6.6 | -- |---|
-| 5  |`CAPI-METAL3`|  1.1.2 | 1.24.1   |  Crio v1.24.1 Containerd v1.6.6 | -- |---|
+| 5  |`CAPI-METAL3`|  1.2.0 | 1.23.5   |  Crio v1.23.5 Containerd v1.6.6 | -- |---|
 
 
 ## Known Issues v0.5.0
 **EPJ-2755**
 
-Description: 
+Description: The system time of RKE node is inconsistent with the time of day-0 node.
 
-Workaround: 
+Workaround: No workaround, it will be fixed in next release.
+  
 
 **EPJ-2007**
 
