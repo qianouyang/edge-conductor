@@ -25,25 +25,25 @@ following sections.
 
 Edge Conductor Release 0.5.0 includes the following:
 
-*  Declaratively node joining.
+*  Support declarative node joining.
 
-*  Replace all uses of the term "experience kit" with "package/kit"
+*  Replace "experience kit" terms by "package" or "kit"
 
-*  Significantly reduce build and deployment time for EC cluster and service deployment
+*  Reduce the time for EC cluster build and service deployment
 
-*  Upgrade latest version of supported Cluster for v0.5.0 (Need a list)
+*  Upgrade to the latest versions on cluster  infra components:(Need a list)
 
-*  Upgrade supported services for V0.5.0 （Need a list)
+*  Upgrade to the latest versions on supported services: (Need a list)
 
 *  Enable Debian 11.3 OS support
 
-*  Enable Ubuntu 22.04 OS & preempt_RT support
+*  Support Edge node with Ubuntu 22.04 as host OS & preempt_RT
 
-*  Add Cert-Management support
+*  integrated "cert-Management" service from upstream
 
-*  Enable error index for the error message
+*  Enable error code and indexing for the error messages
 
-*  Add 3 tutorials of "Hello Cluster Helm", "Web-info" and "RKE deployment"
+*  Add 3 user tutorial documents: "Hello Cluster Helm", "Web-info" and "RKE deployment"
 
 ## Feature & Version List for Cluster Type v0.5.0
 
