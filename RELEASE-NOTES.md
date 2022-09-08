@@ -79,8 +79,8 @@ The following table lists the versions for each cluster type provided in the Edg
 |----| ------------|---------|---------|-----------|---------------|------------|
 | 1  |`KIND`               |  0.14.0    | 1.24.2  | -- | -- |-- |
 | 2  |`RKE`                 |  1.3.12    | 1.23.7-rancher1-1(default)  | -- | -- |-- |
-| 3  |`CAPI(core)`      |  1.23.2 | ---   | ---   | Cert-manager v1.9.0 |verified with metal3 v1.1.1|
-| 4  |`CAPI-BYOH`    |  1.1.2 | 1.23.5   |  Crio v1.23.3 Containerd v1.6.6 | -- |---|
+| 3  |`CAPI(core)`      |  1.2.0 | ---   | ---   | Cert-manager v1.9.0 | -- |
+| 4  |`CAPI-BYOH`    |  1.2.0 | 1.23.5   |  Crio v1.23.3 Containerd v1.6.6 | -- |---|
 | 5  |`CAPI-METAL3`|  1.1.2 | 1.24.1   |  Crio v1.24.1 Containerd v1.6.6 | -- |---|
 
 
