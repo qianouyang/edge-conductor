@@ -257,7 +257,7 @@ provided in the Edge Conductor v0.4.0 release.
 | 2  |`CRI-O`                       |  1.23.2 | No   | No   | Yes  |
 | 3  |`Edge Software Provisioner`   |  2.0.3  | No   | Yes  | Yes† |
 | 4  |`Grafana Dashboard`           |  8.3.6  | Yes  | Yes  | Yes  |
-| 5  |`Intel-GPU-Plugin`            |  0.24  | No   | Yes  | No   |
+| 5  |`Intel-GPU-Plugin`            |  0.23  | No   | Yes  | No   |
 | 6  |`Multus`                      |  v3.8   | Yes  | Yes  | Yes  |
 | 7  |`Offline deployment`          |  N/A    | No   | Yes  | No   |
 | 8  |`Portainer-ce`                |  1.0.22 | Yes  | Yes  | Yes  |
@@ -268,7 +268,6 @@ provided in the Edge Conductor v0.4.0 release.
 | 13 |`Akri`                        |  0.8.4  | Yes  | Yes  | Yes  |
 | 14 |`NFD`                         |  0.11.0 | No   | Yes  | Yes  |
 | 15 |`rt-linux-detection`          |  N/A    | Yes  | Yes  | Yes  |
-
 
 †  Note that Edge Software Provisioner can be run on CAPI clusters when using
    the BYOH deployment framework.
