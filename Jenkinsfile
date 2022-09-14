@@ -18,18 +18,17 @@ pipeline {
     options { disableConcurrentBuilds() }
     environment {
         GOVERSION = "${sh(script:'cat build/Makefile | grep "GOVERSION =" | cut -d "=" -f2', returnStdout: true).trim()}"
+        GITHUB_CREDS = credentials('1source-github-devops-credentials')
     }
     stages {
         stage ('Check license headers') {
             steps {
-                withCredentials([string(credentialsId: 'sys_pmce_git_github_token', variable: 'GITHUB_API_TOKEN')]) {
-                    sh 'git clone https://${GITHUB_API_TOKEN}@github.com/intel-sandbox/applications.analyzers.infrastructure.license-header-checker.git header_scan'
+                    sh 'git clone https://${GITHUB_CREDS}@github.com/intel-sandbox/applications.analyzers.infrastructure.license-header-checker.git header_scan'
                     sh '''
                     cd header_scan 
                     echo -e "Copyright (c) {dates} Intel Corporation.\n\nSPDX-License-Identifier: Apache-2.0" > license_header_template.txt
                     python3 license_header_checker.py check ../ -r
                     '''
-                }
             }
         }
         stage('Go Pipeline') {
@@ -98,7 +97,7 @@ pipeline {
                 SCANNERS                   = getEnvFromBranch(env.BRANCH_NAME)
 
                 // protex details
-                PROTEX_PROJECT_NAME        = 'edge_conductor_opensource_master'
+                PROTEX_PROJECT_NAME        = 'edge_conductor_open_V0.5.0'
 
                 // publishArtifacts details
                 ARTIFACT_RETENTION_PERIOD  = ''
@@ -119,7 +118,7 @@ pipeline {
             }
             when {
                 anyOf {
-                    branch 'master';
+                    branch 'edge_conductor_v0.*.*';
                     branch 'main';
                     changeRequest();
                 }
