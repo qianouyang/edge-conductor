@@ -31,9 +31,9 @@ Edge Conductor Release 0.5.0 includes the following:
 
 *  Reduce the time for Edge Conductor cluster build and service deployment
 
-*  Upgrade to the latest versions on cluster infrastructure components:(Need a list)
+*  Upgrade to the latest versions on cluster infrastructure components
 
-*  Upgrade to the latest versions on supported services: (Need a list)
+*  Upgrade to the latest versions on supported services
 
 *  Enable Debian 11.3 OS support
 
@@ -90,13 +90,7 @@ The following table lists the versions for each cluster type provided in the Edg
 Description: The system time of RKE node is inconsistent with the time of day-0 node.
 
 Workaround: No workaround, it will be fixed in next release.
-  
 
-**EPJ-2007**
-
-Description: 
-
-Workaround: 
 **EPJ-2126**
 
 Description: When using ESP as the OS provider to profile the OS of the
