@@ -29,21 +29,21 @@ Edge Conductor Release 0.5.0 includes the following:
 
 *  Replace "experience kit" terms by "package" or "kit"
 
-*  Reduce the time for EC cluster build and service deployment
+*  Reduce the time for Edge Conductor cluster build and service deployment
 
-*  Upgrade to the latest versions on cluster  infra components:(Need a list)
+*  Upgrade to the latest versions on cluster infrastructure components:(Need a list)
 
 *  Upgrade to the latest versions on supported services: (Need a list)
 
 *  Enable Debian 11.3 OS support
 
-*  Support Edge node with Ubuntu 22.04 as host OS & preempt_RT
+*  Support edge node with Ubuntu 22.04 as host OS & preempt_RT
 
 *  integrated "cert-Management" service from upstream
 
-*  Enable error code and indexing for the error messages
+*  Enable error code and indexing for error messages
 
-*  Add 3 user tutorial documents: "Hello Cluster Helm", "Web-info" and "RKE deployment"
+*  Add 3 user tutorial documents: "Hello Cluster Helm," "Web-info," and "RKE deployment"
 
 ## Feature & Version List for Cluster Type v0.5.0
 
@@ -100,7 +100,7 @@ Workaround:
 **EPJ-2126**
 
 Description: When using ESP as the OS provider to profile the OS of the
-nodes, the user name and password is not set from the Package Kit
+nodes, the user name and password is not set from the package kit
 config file, but set from the ESP profile.
 
 Workaround: Use the user name and password set in the official ESP profile to
@@ -108,7 +108,7 @@ config the node list in a Package Kit config.
 
 **EPJ-2376**
 
-Description: When using CAPI deploy cluster with crio as container runtime, there is error message "overlayfs: unrecognized mount option "volatile" or missing value" on the provisioned nodes. This message is by design of the upstream project. Refer to the [known issue](https://github.com/cri-o/cri-o/issues/4773) of CRI-O.
+Description: When using CAPI deploy cluster with crio as container runtime, the error message "overlayfs: unrecognized mount option "volatile" or missing value" occurs on the provisioned nodes. This message is by design of the upstream project. Refer to the [known issue](https://github.com/cri-o/cri-o/issues/4773) of CRI-O.
 
 Workaround: No workaround required.
 
